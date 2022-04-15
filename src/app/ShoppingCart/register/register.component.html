@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="card">
+        <div class="card-header bg-success text-white text-center">
+          <h2>Register User</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formRegister">
+            <dl>
+              <dt>User Name</dt>
+              <dd>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="Name"
+                />
+              </dd>
+              <dd
+                *ngIf="
+                  formRegister.touched && formRegister.controls['Name'].errors
+                "
+              >
+                <span
+                  class="text-danger"
+                  *ngIf="formRegister.controls['Name'].errors['required']"
+                  >Name is Required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="formRegister.controls['Name'].errors['minlength']"
+                  >Minimum 4 char required</span
+                >
+              </dd>
+
+              <dt>Password</dt>
+              <dd>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="Password"
+                />
+              </dd>
+              <dd
+                *ngIf="
+                  formRegister.touched &&
+                  formRegister.controls['Password'].errors
+                "
+              >
+                <span
+                  class="text-danger"
+                  *ngIf="formRegister.controls['Password'].errors['required']"
+                  >Password is Required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="formRegister.controls['Password'].errors['maxlength']"
+                  >max 10 char are allowed</span
+                >
+              </dd>
+              <dt>Email</dt>
+              <dd>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="Email"
+                />
+              </dd>
+            </dl>
+            <button class="btn btn-outline-success w-100">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

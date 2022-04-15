@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <div class="card">
+        <div class="card-header bg-dark text-white text-center">
+          <h2>Login Form</h2>
+        </div>
+        <div class="card-body">
+          <form #loginForm="ngForm" (submit)="sendData()">
+            <dl>
+              <dt>NAME</dt>
+              <dd>
+                <input
+                  required
+                  minlength="5"
+                  type="text"
+                  class="form-control"
+                  name="text"
+                  ngModel
+                  #text="ngModel"
+                />
+              </dd>
+              <dd *ngIf="loginForm.submitted && text.invalid">
+                <span class="text-danger" *ngIf="text.errors?.['required']"
+                  >User name is Required</span
+                >
+                <span class="text-danger" *ngIf="text.errors?.['minlength']"
+                  >Minimum 5 chars are Required</span
+                >
+              </dd>
+              <dt>PASSWORD</dt>
+              <dd>
+                <input
+                  required
+                  minlength="5"
+                  maxlength="10"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  ngModel
+                  #password="ngModel"
+                />
+              </dd>
+              <dd *ngIf="loginForm.submitted && password.invalid">
+                <span class="text-danger" *ngIf="password.errors?.['required']"
+                  >Password is Required</span
+                >
+                <span class="text-danger" *ngIf="password.errors?.['minlength']"
+                  >Password Required minimum 5 char
+                </span>
+                <span class="text-danger" *ngIf="password.errors?.['maxlength']"
+                  >Password should not cross 10 char</span
+                >
+              </dd>
+            </dl>
+            <button
+              [disabled]="loginForm.invalid"
+              class="btn btn-outline-dark w-100 mt-1 px-4"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row text-center">
+    <div class="col">
+      <dl>
+        <dt>Prinstine</dt>
+        <dd>{{ loginForm.pristine }}</dd>
+        <dt>dirty</dt>
+        <dd>{{ loginForm.dirty }}</dd>
+        <dt>valid</dt>
+        <dd>{{ loginForm.valid }}</dd>
+        <dt>Invalid</dt>
+        <dd>{{ loginForm.invalid }}</dd>
+        <dt>Submitted</dt>
+        <dd>{{ loginForm.submitted }}</dd>
+        <dt>Touched</dt>
+        <dd>{{ loginForm.touched }}</dd>
+        <dt>Untouched</dt>
+        <dd>{{ loginForm.untouched }}</dd>
+      </dl>
+    </div>
+  </div> -->
+</div>
